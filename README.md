@@ -1,4 +1,4 @@
-# (5AUA0) Advanced Sensing using Deep Learning at TU/e
+# Advanced Sensing using Deep Learning
 
 Course materials and tutorials.
 
