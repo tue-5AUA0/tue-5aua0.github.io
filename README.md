@@ -1,2 +1,5 @@
-# tue5aua0.github.io
-Course materials for Advanced Sensing using Deep Learning  
+# (5AUA0) Advanced Sensing using Deep Learning at TU/e
+
+Course materials and tutorials.
+
+## Tutorials
