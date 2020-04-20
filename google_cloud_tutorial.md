@@ -1,7 +1,8 @@
 # Google Cloud
-Credits for Google Cloud can be added in your account through the following steps (image given below).
+After following the instructions from the e-mail you have received to obtain the coupon code, credits for Google Cloud 
+can be added in your account through the following steps (image given below).
 1. Navigate to [https://console.cloud.google.com/edu](https://console.cloud.google.com/edu)
-2. Enter the coupon code
+2. Enter the coupon code (see e-mail)
 3. Select your country of residence
 4. Opt-in or opt-out of newsletters
 5. Accept and continue
