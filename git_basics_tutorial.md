@@ -226,3 +226,34 @@ Or finally, resetting your HEAD, preserve all changes in those commits as unstag
 uncommitted changes:
 
 ``` git reset --keep <commit> ```
+
+## Issues and Pull Requests
+One of the great things of (open source) software development is the possibility to let others (the maintainers) know 
+that either something does not work or can be improved. These can be conveyed using **issues** (letting them know) and 
+**pull requests** (fixing/improving it). 
+
+#### Issues
+Issues can be opened from the repository home page on GitHub (example for this course is the [tutorials 
+repo](https://github.com/tue-5AUA0/tue-5aua0.github.io])). It is important to give it a good but short descriptive
+title (preferably fewer than ~60 characters), which is true in general for titles for which more information can be 
+found [here](https://www.nngroup.com/articles/microcontent-how-to-write-headlines-page-titles-and-subject-lines/).
+Also, assign a proper label for the issue making it easier to filter. In the body of the issue, try to be as thorough as
+possible. If a specific error/bug is involved, summarize the system you are working on (software version(s), package 
+version(s), your OS + version). 
+Furthermore, make use of the supported markdown to make it readable (headers, lists, italics, bold, etc.).
+Please also link relevant code snippets in here (for which a tutorial can be found 
+[here](https://help.github.com/en/github/managing-your-work-on-github/creating-a-permanent-link-to-a-code-snippet)).
+
+#### Pull requests
+When there is a bug-fix or improvement you want to see implemented in the code, you can make a pull request (which is 
+similar to a merge request if you work on a private code base in GitLab). This links the branch you made your 
+improvement on and a target (most often 'development' or 'master'). In here, you can indicate why you want to make this
+change and/or addition and what you have done. It is also possible to assign someone else (e.g. a maintainer) to have a
+look at it and possibly merge it. After you have cloned the repository, you can create this branch containing your 
+changes. 
+Now, on the GitHub repository page, you can create a pull request linking this branch and write a description/summary 
+for it. When there is an issue which is solved by this pull request, it is also possible to link these (which of course
+then should be done!). 
+
+As a reference to what constitutes a good pull request, please also see [this GitHub 
+tutorial](https://gist.github.com/mikepea/863f63d6e37281e329f8).
