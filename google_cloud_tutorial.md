@@ -143,10 +143,13 @@ If you want native file access to your bucket from your VM instance, you can fol
 tutorial](https://cloud.google.com/storage/docs/gcs-fuse) to set up FUSE. 
 
 &nbsp;
-***
+
+* * *
+
 &nbsp;
 
 ## Linux commands cheat sheet
+
 | General                                                                                    |                                      |
 |--------------------------------------------------------------------------------------------|--------------------------------------|
 | Linux system information                                                                   | `uname -a`                           |
