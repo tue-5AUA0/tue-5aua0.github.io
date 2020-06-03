@@ -100,7 +100,8 @@ gcloud compute ssh --project [PROJECT_ID] --zone [ZONE] [INSTANCE_NAME]
 
 #### Connection VM with Github 
 First off: open the virtual machine in google cloud by starting the [VM instances page](https://console.cloud.google.com/compute/instances) and clicking at the `SSH` button. A new black virtual machine window pop ups, which looks like this: 
-(./assets/img/vminstance.png)
+
+![VMInstanceScreen](./assets/img/vminstance.PNG)
 
 To connect the virtual machine with your github account or repository a new ssh key needs to be added to your profile/repository. 
 The generation of the new ssh key can be done with the usual ssh key generation command line: 
