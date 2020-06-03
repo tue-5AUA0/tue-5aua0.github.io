@@ -98,6 +98,41 @@ corresponding to your instance:
 gcloud compute ssh --project [PROJECT_ID] --zone [ZONE] [INSTANCE_NAME]
 ```
 
+#### Connection VM with Github 
+First off: open the virtual machine in google cloud by starting the [VM instances page](https://console.cloud.google.com/compute/instances) and clicking at the `SSH` button. A new black virtual machine window pop ups, which looks like this: 
+(./assets/img/vminstance.png)
+
+To connect the virtual machine with your github account or repository a new ssh key needs to be added to your profile/repository. 
+The generation of the new ssh key can be done with the usual ssh key generation command line: 
+```
+ssh-keygen -t rsa -b 4096 -C [github_email]
+```
+Next there will be asked if you would like to rename the key. This is not needed. You can just press `enter` on your keyboard.
+The next question is if you would like to give it a password. This is also not necessary. So you can also just press `enter`.
+Now the ssh key is generated for the VM.
+Next up you would like that the key is shown in your VM screen. This can be done by giving this command:
+```
+cat /home/[google_user_name]/.ssh/id_rsa.pub
+```
+Now your ssh key is shown for the virtual machine. You have to copy this ssh key.
+For now we switch to your github account with the copied key. If you are able to deploy this key in this specific repository, you can upload the key at repository settings under 'deploy keys'. If this is not possible for the specific repository. You have to copy the key to your account. This is done at clicking at your avatar in the top right corner of github. Then click 'Settings' --> 'SSH and GPG keys' --> 'New SSH Key' insert the key over here and give it a name. 
+
+Now go back to the black Virtual Machine screen. 
+Furthermore the GitHub has to be added to the list of trustfull servers to make sure a SSH connection is possible. This is done by entering this in the command line:
+```
+ssh-keyscan github.com >> /home/[google_user_name]/.ssh/known_hosts
+```
+
+When this is done it is possible to clone your git repository in the virtual machine.  It is optional to clone this in a certain folder. This can be done by adding a foldername behind the command.
+```
+git clone git@github.com:[user_name]/[repo_name].git
+```
+Make sure that the code works when running in the virtual machine!
+The code can be run in the virtual machine by the command:
+```
+python [file_name.py]
+```
+
 ## Data and Google Buckets
 Training/evaluation dataset can be efficiently stored in a bucket. This bucket can then be linked to your virtual 
 machine instance so that the data can be accessed by it. Use `gsutil` to create and modify these buckets on the command
