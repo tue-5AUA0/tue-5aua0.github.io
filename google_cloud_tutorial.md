@@ -98,38 +98,37 @@ corresponding to your instance:
 gcloud compute ssh --project [PROJECT_ID] --zone [ZONE] [INSTANCE_NAME]
 ```
 
-#### Connection VM with Github 
+### Connection VM with Github 
 First off: open the virtual machine in google cloud by starting the [VM instances page](https://console.cloud.google.com/compute/instances) and clicking at the `SSH` button. A new black virtual machine window pop ups, which looks like this: 
 
 ![VMInstanceScreen](./assets/img/vminstance.PNG)
 
-To connect the virtual machine with your github account or repository a new ssh key needs to be added to your profile/repository. 
-The generation of the new ssh key can be done with the usual ssh key generation command line: 
+To connect the virtual machine with your github account or repository a new SSH key needs to be added to your profile/repository. 
+The generation of the new SSH key can be done with the usual SSH key generation in the command line: 
 ```
 ssh-keygen -t rsa -b 4096 -C [github_email]
 ```
-Next there will be asked if you would like to rename the key. This is not needed. You can just press `enter` on your keyboard.
+Next, it will be asked if you would like to rename the key. This is not needed, so you can just press `enter` on your keyboard.
 The next question is if you would like to give it a password. This is also not necessary. So you can also just press `enter`.
-Now the ssh key is generated for the VM.
-Next up you would like that the key is shown in your VM screen. This can be done by giving this command:
+Now the SSH key is generated for this specific VM.
+Next up you would like that the key is shown in your VM screen for copying to GitHub. This can be done by giving this command:
 ```
 cat /home/[google_user_name]/.ssh/id_rsa.pub
 ```
-Now your ssh key is shown for the virtual machine. You have to copy this ssh key.
+Now your SSH key is shown for the virtual machine. You have to copy this SSh key.
 For now we switch to your github account with the copied key. If you are able to deploy this key in this specific repository, you can upload the key at repository settings under 'deploy keys'. If this is not possible for the specific repository. You have to copy the key to your account. This is done at clicking at your avatar in the top right corner of github. Then click 'Settings' --> 'SSH and GPG keys' --> 'New SSH Key' insert the key over here and give it a name. 
 
-Now go back to the black Virtual Machine screen. 
-Furthermore the GitHub has to be added to the list of trustfull servers to make sure a SSH connection is possible. This is done by entering this in the command line:
+Now go back to the black Virtual Machine screen. Now that GitHub knows your credentials, the VM must also know where to find (and more importantly, trust) the GitHub server. This is done by entering the following in the command line:
 ```
 ssh-keyscan github.com >> /home/[google_user_name]/.ssh/known_hosts
 ```
 
-When this is done it is possible to clone your git repository in the virtual machine.  It is optional to clone this in a certain folder. This can be done by adding a foldername behind the command.
+When this is done, it is possible to clone your git repository in the virtual machine.  It is optional to clone this in a certain folder. This can be done by adding a foldername behind the command.
 ```
 git clone git@github.com:[user_name]/[repo_name].git
 ```
 Make sure that the code works when running in the virtual machine!
-The code can be run in the virtual machine by the command:
+The code can for example be run in the virtual machine using the default Python installation with the command:
 ```
 python [file_name.py]
 ```
