@@ -32,8 +32,7 @@ a larger GPU quota:
 Click on the link to your 
 [quotas page](https://console.cloud.google.com/iam-admin/quotas?metric=GPUs%20(all%20regions)&location=GLOBAL), select 
 `Compute Engine API` and click `[+] EDIT QUOTAS` at the top of the page. On the pane that opens, fill in your details 
-(phone number need not be accurate), and click next. Enter a new quota limit (e.g. 2 for 2 GPUs to be used 
-simultaneously), and enter a description (e.g. 'Needed for a university course in deep learning'), click on done and 
+(phone number need not be accurate), and click next. Enter a new quota limit (**TIP:** start by requesting only `1` GPU. If you request more, it's possible that your request will be denied), and enter a description (e.g. 'Needed for a university course in deep learning, to train neural networks.'), click on done and 
 then click submit request. Now, within a couple of minutes, you should receive a confirmation of your request on the 
 email address of your account.
 
