@@ -8,5 +8,3 @@ For questions/concerns/bug reports about these pages, please submit an issue or 
 ## Tutorials
 * [Git tutorial](./git_basics_tutorial.md): Overview of some basic Git commands.
 * [Google Colab tutorial](./google_colab_tutorial.md): Brief introduction to using Google Colab for prototyping.
-* [Google Cloud tutorial](./google_cloud_tutorial.md): Tutorial on setting up and using Google Cloud for 
-remote computation.
