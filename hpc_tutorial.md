@@ -67,11 +67,44 @@ We now have acces to a high tier GPU (NVIDIA A100) to test our code for (a littl
 
 ## Running
 
-If you have tested your code using the interactive graphical compute node and it works. You might want to run an extended training session. For this you will have to submit a *batch job*. In this batch job you will specify what resources you want, how long you want them and what needs to be ran exactly. After submitting the job, the system will schedule it. This is often not instanteanous as your job might be ran overnight.
+If you have tested your code using the interactive graphical compute node and it works. You might want to run an extended training session. For this you will have to submit a *batch job*. In this batch job you will specify what resources you want, how long you want them and what needs to be ran exactly. After submitting the job, the system will schedule it. This is often not instanteanous as your job might be ran overnight. 
 
-### creating a job script
+### example job script
+
+The following job script will request a single GPU node with 1 GPU attached for 1 hour. Once the script has started running and once it ends, you will receive an email.
+
+```bash
+#!/bin/bash
+
+# Set job requirements
+#SBATCH --nodes=1
+#SBATCH --gpus-per-node=1
+#SBATCH --partition=gpu
+#SBATCH --time=1:00:00
+#SBATCH --mail-type=BEGIN,END
+#SBATCH --mail-user=a.b.c.smith@student.tue.nl
+
+# activate conda environment
+source activate hpc
+
+# go into your project folder
+cd $TMPDIR/5aua0-project-template-hpc
+
+# make sure on correct branch
+git checkout master
+
+# run your code
+python train.py
+```
+
+This script can be run using `sbatch training_job.sh`. The outputs of the run i.e. print statements to the terminal will be saved to a slurm-<jobid>.out file.
 
 
-create job script `training_job.sh`
+### usefull comands
 
-run script `sbatch training_job.sh`
+* `accinfo` shows your compute budget and other account information
+
+* `squeue -j <jobid> -o "%.18i %.9P %.8j %.8u %.2t %.10M %.6D %R %S"` shows the *estimated* time at which your job will run
+
+* `squeue -u <username>` gives an overview of your currently active jobs
+
