@@ -55,15 +55,34 @@ Now you can develop your code from your local machine while being connected to t
 When you want to run/test your code on a GPU there are two options. You can submit a batch job or you can request an interactive session. The latter we will explain here. The following code can be ran in the terminal and will allocate (request) one GPU node for 10 minutes and will attach one GPU to that node. 
 
 `salloc -n 1 -t 00:10:00 -p gpu --gpus-per-node=1`
+
 After running that command, the system will try to schedule the requested resources. This will usually not take long, especially when not requesting a lot. The following will be printed to the terminal. 
 
-![hpc_salloc](assets\img\hpc_salloc.png)
+<!-- ![hpc_salloc](assets\img\hpc_salloc.png) -->
+```console
+[<username>@int5 5aua0-project-template]$ salloc -n 1 -t 00:10:00 -p gpu --gpus-per-node=1
+salloc: Single-node jobs run on a shared node by default. Add --exclusive if you want to use a node exclusively.
+salloc: A full node consists of 72 CPU cores, 491520 MiB of memory and 4 GPUs and can be shared by up to 4 jobs.
+salloc: By default shared jobs get 6826 MiB of memory per CPU core, unless explicitly overridden with --mem-per-cpu, --mem-per-gpu or --mem.
+salloc: You will be charged for 0.25 node, based on the number of CPUs, GPUs and the amount memory that you've requested.
+salloc: Pending job allocation 2523214
+salloc: job 2523214 queued and waiting for resources
+salloc: job 2523214 has been allocated resources
+salloc: Granted job allocation 2523214
+salloc: Waiting for resource configuration
+salloc: Nodes gcn35 are ready for job
+```
 
-On the last line it says the node *gcn41* is ready for the job (*gcn* stands for graphical compute node). Now we can ssh into that node with
+On the last line it says the node *gcn35* is ready for the job (*gcn* stands for graphical compute node). Now we can ssh into that node with
 
-`ssh gcn41`
+`ssh <nodename>`
 
-We now have acces to a high tier GPU (NVIDIA A100) to test our code for (a little less than) 10 minutes. Use this time not to run full experiments but to verify that your code runs and a model is training. You can only request up to one hour of compute node time here. Allocating a compute node is not free and thus your budget will decrease from it.
+```console
+[<username>@int5 5aua0-project-template-hpc]$ ssh gcn35
+[<username>@gcn35 ~]$ 
+```
+
+We now have acces to a high tier GPU (NVIDIA A100) to test our code for (a little less than) 10 minutes. Use this time not to run full experiments but to verify that your code runs and a model is training. You can only request up to one hour of compute node time here. Allocating a compute node is not free and thus your budget will decrease from it. If you want to stop using the interactive compute node you can use `scancel <jobid>` to close the connection. You're budget will from that moment not be consumed anymore.
 
 ## Running
 
@@ -107,4 +126,12 @@ This script can be run using `sbatch training_job.sh`. The outputs of the run i.
 * `squeue -j <jobid> -o "%.18i %.9P %.8j %.8u %.2t %.10M %.6D %R %S"` shows the *estimated* time at which your job will run
 
 * `squeue -u <username>` gives an overview of your currently active jobs
+
+* `scancel <jobid>` cancels a job such that it will no longer use your computational budget
+
+To analyze the system resources that are being used, you can open a new terminal and ssh into the compute node to run:
+
+* `top` gives an overview of CPU and memmory usage
+
+* `nvidia-smi` gives an overview of the GPU usage
 
