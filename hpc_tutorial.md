@@ -34,11 +34,17 @@ It is advised to now try to clone your GitHub repository used for the course, fo
 ### Moving files from and to Snellius
 The easiest way to move files from your local to the remote is to drag and drop them into the *explorer* section in the left hand side of your VSCode window. This unfortunately does not work for moving files from the remote to your local machine. For this you can use the `scp` command. The following command will copy a file from the remote to your current directory. 
 
-`scp -r <username>@snellius.surf.nl:<path to file> ~`
+```bash
+scp -r <username>@snellius.surf.nl:<path to file> ~
+```
 
 ### Anaconda on HPC
 
-When you are ready to use the HPC for development/setting up a job, you might want to re-use the same conda environment as you created before on your local machine. Instead of creating a new environment, you can export an existing environment using `conda env export > environment.yml --from-history`. Now to install this environment on your HPC:
+When you are ready to use the HPC for development/setting up a job, you might want to re-use the same conda environment as you created before on your local machine. Instead of creating a new environment, you can export an existing environment using 
+```
+conda env export > environment.yml --from-history
+``` 
+Now to install this environment on your HPC:
 
 * Make sure you are connected to a Snellius login node (you will see something like `[<username>@int6 ~]$` in your terminal, where *int* stands for CPU interactive node)
 * `module load 2022` This will load some core libraries to use. (`module spider avail` will list all modules that can be loaded)
@@ -54,7 +60,9 @@ Now you can develop your code from your local machine while being connected to t
 
 When you want to run/test your code on a GPU there are two options. You can submit a batch job or you can request an interactive session. The latter we will explain here. The following code can be ran in the terminal and will allocate (request) one GPU node for 10 minutes and will attach one GPU to that node. 
 
-`salloc -n 1 -t 00:10:00 -p gpu --gpus-per-node=1`
+```
+salloc -n 1 -t 00:10:00 -p gpu --gpus-per-node=1
+```
 
 After running that command, the system will try to schedule the requested resources. This will usually not take long, especially when not requesting a lot. The following will be printed to the terminal. 
 
@@ -73,9 +81,7 @@ salloc: Waiting for resource configuration
 salloc: Nodes gcn35 are ready for job
 ```
 
-On the last line it says the node *gcn35* is ready for the job (*gcn* stands for graphical compute node). Now we can ssh into that node with
-
-`ssh <nodename>`
+On the last line it says the node *gcn35* is ready for the job (*gcn* stands for graphical compute node). Now we can ssh into that node with `ssh <nodename>`, for example
 
 ```console
 [<username>@int5 5aua0-project-template-hpc]$ ssh gcn35
@@ -116,7 +122,11 @@ git checkout master
 python train.py
 ```
 
-This script can be run using `sbatch training_job.sh`. The outputs of the run i.e. print statements to the terminal will be saved to a slurm-<jobid>.out file.
+This script can be run using 
+```bash
+sbatch training_job.sh
+```
+The outputs of the run i.e. print statements to the terminal will be saved to a slurm-<jobid>.out file.
 
 
 ### usefull comands
