@@ -70,9 +70,9 @@ Now, it is possible to finalise your commit with a useful message. The message s
 ``` git commit -m"Add useful description of changes (roughly <50 characters)" ```
 
 If you - in the meantime - needed to add some code which should be included in that commit, you can 'add' the files 
-again and use the following command to change your last commit (NB: Don't ammend published commits!):
+again and use the following command to change your last commit (NB: Don't amend published commits!):
 
-``` git commit --ammend ```
+``` git commit --amend ```
 
 Finally, you can get these changes onto the remote server with:
 
